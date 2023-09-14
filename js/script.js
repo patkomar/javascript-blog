@@ -74,15 +74,18 @@ function generateTitleLinks(){
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
     const linkHTMLData = {id: articleId, title: articleTitle};
-    const linkHTML = templates.articleLink(linkHTMLData);
-    console.log(linkHTML);
+   
     /* insert link into titleList */
-   titleList.insertAdjacentHTML('beforebegin', linkHTML);
    html = html + linkHTML;
-
+   
+   titleList.innerHTML = html
+   
+   const links = document.querySelectorAll('.titles a');
+   for(let link of links){
+     link.addEventListener('click', titleClickHandler);
+   }
+ }
+ generateTitleLinks();
 }
-
-generateTitleLinks();
-
 
 
